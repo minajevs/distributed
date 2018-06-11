@@ -1,7 +1,0 @@
-js/vendor/firebaseinitialization.js
-.sass-cache
-node_modules/
-.DS_Store
-npm-debug.log
-coverage/
-dist/
