@@ -1,4 +1,4 @@
-# Fun Retro
+# Fun Retro [FORK]
 Easy to use and beautiful restrospective board.
 
 Learn more about retrospectives at [funretrospectives.com](http://funretrospectives.com)
