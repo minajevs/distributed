@@ -193,6 +193,10 @@ angular
         return message.creating && privateWritingOn;
       };
 
+      $scope.isHighlighted = function(message) {
+        return message.highlight;
+      };
+
       $scope.updatePrivateWritingToggle = function(privateWritingOn) {
         $scope.boardRef.update({
           text_editing_is_private: privateWritingOn,
@@ -210,7 +214,12 @@ angular
 
       $scope.saveMessage = function(message) {
         message.creating = false;
+        message.highlight = true;
         $scope.messages.$save(message);
+        setTimeout(() => {
+          message.highlight = false;
+          $scope.messages.$save(message);
+        }, 3000);
       };
 
       function redirectToBoard() {
