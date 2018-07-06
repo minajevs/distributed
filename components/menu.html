@@ -10,6 +10,7 @@
   </span>
   <label for="sortField" class="menu-controls">Sort by</label>
   <select id="sortField" title="sort fields by" ng-model="sortField" ng-change="updateSortOrder()">
+    <option value="date_saved">Recently saved</option>
     <option value="date_created">Created date</option>
     <option value="votes">Votes</option>
   </select>
