@@ -127,11 +127,11 @@ angular
           var keyValue = pair.split('=');
           $scope.searchParams[keyValue[0]] = keyValue[1];
         });
-      $scope.sortField = $scope.searchParams.sort || 'date_created';
+      $scope.sortField = $scope.searchParams.sort || 'date_saved';
       $scope.selectedType = 1;
       $scope.import = {
         data: [],
-        mapping: [],
+        mapping: [], 
       };
 
       $scope.droppedEvent = function(dragEl, dropEl) {
@@ -209,12 +209,13 @@ angular
       };
 
       $scope.getSortFields = function() {
-        return $scope.sortField === 'votes' ? ['-votes', 'date_created'] : 'date_created';
+        return $scope.sortField === 'votes' ? ['-votes', 'date_created'] : ['-date_saved', 'date_created'];
       };
 
       $scope.saveMessage = function(message) {
         message.creating = false;
         message.highlight = true;
+        message.date_saved = firebaseService.getServerTimestamp();
         $scope.messages.$save(message);
         setTimeout(() => {
           message.highlight = false;
@@ -354,6 +355,7 @@ angular
             },
             date: firebaseService.getServerTimestamp(),
             date_created: firebaseService.getServerTimestamp(),
+            date_saved: firebaseService.getServerTimestamp(),
             votes: 0,
           })
           .then(addMessageCallback);
